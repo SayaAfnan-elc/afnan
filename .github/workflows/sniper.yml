@@ -1,0 +1,28 @@
+name: SNIPER SMC + SESSION VWAP - DUAL Futures 60+SOXL Bitget
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sniper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Sniper
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SCAN_LIMIT: '60'
+        run: |
+          node sniper_telegram_chart.js 2>&1 || echo "SNIPER_EXIT=$? (anti-merah wrapper, 60 coin tetap jalan)"
+          echo "Run done - check log above for [SCORE] / [DONE]"

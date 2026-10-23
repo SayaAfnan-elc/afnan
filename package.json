@@ -1,0 +1,10 @@
+{
+  "name": "sniper-telegram-chart",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Sniper Telegram Text-Only Stabil - A+ 85+ Chart PNG menyusul",
+  "main": "sniper_telegram_chart.js",
+  "scripts": { "start": "node sniper_telegram_chart.js" },
+  "dependencies": {},
+  "engines": { "node": ">=18.0.0" }
+}
